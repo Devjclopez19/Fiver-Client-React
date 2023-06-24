@@ -14,7 +14,7 @@ const Home = () => {
       <div className='home'>
         <Featured />
         <TrustedBy />
-        <Slide slidesToShow={5} slidesToScroll={5}>
+        <Slide slidesToShow={5} slidesToScroll={5} dots={false} arrows={true}>
           {cards.map(card => (
             <CatCard key={card.id} item={card} />
           ))}
@@ -98,7 +98,7 @@ const Home = () => {
           </div>
         </div>
         </div>
-        <Slide slidesToShow={4} slidesToScroll={4}>
+        <Slide slidesToShow={4} slidesToScroll={4} dots={true} arrows={false}>
           {projects.map(project => (
             <ProjectCard key={project.id} item={project} />
           ))}

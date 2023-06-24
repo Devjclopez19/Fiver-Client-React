@@ -1,0 +1,40 @@
+.login {
+  margin: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    width: 300px;
+    box-shadow: 0 0 5px 1px #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: 'Monserrat', sans-serif;
+
+    h2 {
+      text-align: center;
+      color: #918d8d;
+    }
+    label {
+      font-weight: 600;
+      color: #8b8a8a;
+      font-size: 14px;
+    }
+    input {
+      padding: 8px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #1dbf73;
+      color: white;
+      font-weight: 500;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
+}

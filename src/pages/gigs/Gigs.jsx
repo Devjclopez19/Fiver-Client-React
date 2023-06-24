@@ -1,30 +1,47 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Gigs.scss";
 import Layout from "../../components/Layout";
 import GigCard from "../../components/gigCard/GigCard";
-import { gigs } from "../../data"
+// import { gigs } from "../../data";
+import { useQuery } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
+import { useLocation } from "react-router-dom";
 
 const Gigs = () => {
-  const [open, setOpen] = useState(false)
-  const [sort, setSort] = useState("sales")
-  const minRef = useRef()
-  const maxRef = useRef()
+  const [open, setOpen] = useState(false);
+  const [sort, setSort] = useState("sales");
+  const minRef = useRef();
+  const maxRef = useRef();
+
+  const { search } = useLocation()
+
+  
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["gigs"],
+    queryFn: () => {
+      return newRequest(`/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`);
+    },
+  });
 
   const reSort = (type) => {
-    setSort(type)
-    setOpen(false)
-  }
+    setSort(type);
+    setOpen(false);
+    console.log(sort);
+  };
+
+  useEffect(()=> {
+    refetch()
+  }, [sort])
 
   const apply = () => {
-    console.log(minRef.current.value);
-    console.log(maxRef.current.value);
-  }
+    refetch()
+  };
 
   return (
     <Layout>
       <div className="gigs">
         <div className="container">
-          <span className="breadcrumbs">Liverr > Graphics & Design ></span>
+          <span className="breadcrumbs">Liverr - Graphics & Design - </span>
           <h1>AI Artists</h1>
           <p>
             Explore the boundaries of art and technology with Liverr's AI
@@ -56,9 +73,11 @@ const Gigs = () => {
             </div>
           </div>
           <div className="cards">
-            {gigs.map((gig) => (
-              <GigCard key={gig.id} item={gig} />
-            ))}
+            {isLoading
+              ? "loading..."
+              : error
+              ? "Something went error"
+              : data.data.data.map((gig) => <GigCard key={gig._id} item={gig} />)}
           </div>
         </div>
       </div>
