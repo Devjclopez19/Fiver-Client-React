@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Gigs.scss";
 import Layout from "../../components/Layout";
 import GigCard from "../../components/gigCard/GigCard";
-// import { gigs } from "../../data";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useLocation } from "react-router-dom";
@@ -14,7 +13,6 @@ const Gigs = () => {
   const maxRef = useRef();
 
   const { search } = useLocation()
-
   
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["gigs"],
