@@ -74,8 +74,8 @@ const Gigs = () => {
             {isLoading
               ? "loading..."
               : error
-              ? "Something went error"
-              : data.data.data.map((gig) => <GigCard key={gig._id} item={gig} />)}
+              ? "What you were looking for was not found, please try other keywords"
+              : data?.data.data.map((gig) => <GigCard key={gig._id} item={gig} />)}
           </div>
         </div>
       </div>

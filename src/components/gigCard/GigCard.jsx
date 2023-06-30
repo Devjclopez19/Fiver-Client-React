@@ -27,7 +27,7 @@ const GigCard = ({ item }) => {
               <span>{data?.data.data.username}</span>
             </div>
           )}
-          <p>{item.shortDesc}</p>
+          <p>{item.title}</p>
           <div className="star">
             <img src="./img/star.png" alt="" />
             <span>{!isNaN(item.totalStars / item.starNumber) && Math.round(item.totalStars / item.starNumber)}</span>
@@ -40,7 +40,6 @@ const GigCard = ({ item }) => {
             <span>STARTING AT</span>
             <h2>
               $ {item.price}
-              <sup>99</sup>
             </h2>
           </div>
         </div>
