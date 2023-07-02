@@ -1,5 +1,5 @@
 import React from 'react'
-import './projectCard.scss'
+import './ProjectCard.scss'
 import { Link } from 'react-router-dom'
 
 const ProjectCard = ({item}) => {
