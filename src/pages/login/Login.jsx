@@ -14,9 +14,9 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await newRequest.post("/auth/login", { email, password });
-      if(res.data.success) {
-        localStorage.setItem("currentUser", JSON.stringify(res.data.data))
-        navigate('/')
+      if (res.data.success) {
+        localStorage.setItem("currentUser", JSON.stringify(res.data.data));
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -27,6 +27,7 @@ const Login = () => {
   return (
     <Layout>
       <div className="login">
+        <div className="form-login">
         <form onSubmit={handleSubmit}>
           <h2>Sign in</h2>
           <label htmlFor="">Email</label>
@@ -45,6 +46,17 @@ const Login = () => {
           />
           <button type="submit">Login</button>
         </form>
+        <div className="access-data">
+          <div className="item">
+            <b>Email: </b> user@gmail.com
+            <b> - Password: </b> 123456
+          </div>
+          <div className="item">
+            <b>Email: </b> seller@gmail.com
+            <b> - Password: </b> 123456
+          </div>
+        </div>
+        </div>
       </div>
     </Layout>
   );
